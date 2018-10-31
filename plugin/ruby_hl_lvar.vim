@@ -33,7 +33,7 @@ function! Ruby_hl_lvar_filetype()
 	call ruby_hl_lvar#refresh(1)
 	augroup ruby_hl_lvar
 		autocmd! * <buffer>
-		autocmd TextChanged <buffer> call ruby_hl_lvar#refresh(0)
+		autocmd BufWritePost <buffer> call ruby_hl_lvar#refresh(0) " 
 		autocmd InsertEnter <buffer> call ruby_hl_lvar#disable(0)
 		autocmd InsertLeave <buffer> call ruby_hl_lvar#refresh(0)
 	augroup END
