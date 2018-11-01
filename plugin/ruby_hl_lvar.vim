@@ -15,6 +15,7 @@ let g:ruby_hl_lvar_show_warnings =
 augroup ruby_hl_lvar
 	autocmd!
 	autocmd Filetype    * call Ruby_hl_lvar_filetype()
+	autocmd BufEnter    * call ruby_hl_lvar#redraw()
 	autocmd WinEnter    * call ruby_hl_lvar#redraw()
 	autocmd WinLeave    * call ruby_hl_lvar#redraw()
 	autocmd TabEnter    * call ruby_hl_lvar#redraw()
@@ -33,7 +34,7 @@ function! Ruby_hl_lvar_filetype()
 	call ruby_hl_lvar#refresh(1)
 	augroup ruby_hl_lvar
 		autocmd! * <buffer>
-		autocmd BufWritePost <buffer> call ruby_hl_lvar#refresh(0) " 
+		autocmd BufWritePost <buffer> call ruby_hl_lvar#refresh(0)
 		autocmd InsertEnter <buffer> call ruby_hl_lvar#disable(0)
 		autocmd InsertLeave <buffer> call ruby_hl_lvar#refresh(0)
 	augroup END
